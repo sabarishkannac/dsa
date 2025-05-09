@@ -1,0 +1,33 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+    }
+
+    void rotatearraywithksteps(){
+        Scanner sc= new Scanner(System.in);
+        int [] arr = {1,2,3,4,5,6,7,8};
+        int k=sc.nextInt();
+
+        int n= k%arr.length;
+        int [] output= new int [arr.length];
+        int j=0;
+        for (int i= n-k;i<arr.length;i++){
+            output[j++]=arr[i];
+        }
+        for(int i=0;i<n-k;i++){
+            output[j++]= arr[i];
+        }}
+
+    void reversenumberswithnospaces(){
+        int a,b;
+        a=4;
+        b=3;
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
