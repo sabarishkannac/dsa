@@ -1,0 +1,89 @@
+import java.util.*;
+
+class Main{public static void main(String [] args){
+
+    Scanner sc= new Scanner(System.in);
+    int x= sc.nextInt();
+    int y= sc.nextInt();
+    int [][] arr1= new int [x][y];
+    int [][] arr2= new int [x][y];
+
+    for (int i=0;i<x;i++){
+        for(int j=0;j<y;j++){
+            arr2[i][j]=arr1[i][j]= sc.nextInt();
+        }
+    }
+}
+static int[][] find_transpose(int [][] matrix,int r,int c){
+    int [][] ouarray= new int [c][r];
+    for(int i=0;i<c;i++){
+        for(int j=0;j<r;j++){
+
+            ouarray[j][i]= matrix[i][j];
+
+        }
+    }
+return ouarray;}
+static int [][] ninety_rotate(int [][]matrix,int r,int c){
+
+    matrix= find_transpose(matrix,r,c);
+    for (int i=0;i<r;i++){
+        for(int j=0;j<matrix.length/2;j++){
+            int t= matrix[i][j];
+            matrix[i][j]=matrix[i][i-1-j];
+            matrix[i][i-1-j]=t;
+        }
+
+    }
+return matrix;
+}
+static int [][] pascal_triangle(int n){
+    int [][] ans= new int [n][];
+    for(int i=0;i<n;i++){
+        ans[i]=new int [i+1];
+        ans[1][0]=ans[i][i]=1;
+        for(int j=1;j<i;j++){
+
+            ans[i][j]=ans[i-1][j]+ans[i-1][j-1];
+        }
+
+
+
+    }
+
+return ans;}
+
+void print_spiral_order(int [][] matrix,int r,int c){
+    int toprow=0,bottomrow=r-1,leftcol=0,rightcol=c-1;
+    int totalelements=0;
+    while(totalelements<r*c){
+        for(int j= leftcol;j<-rightcol;j++){
+            System.out.println(matrix[toprow][j]);
+            totalelements++;
+            }
+        toprow++;
+        for(int i=toprow;i<= bottomrow;i++){
+            System.out.println(matrix[i][rightcol]);
+            totalelements++;}
+        rightcol--;
+        for(int k=rightcol;k>=leftcol;k--){
+            System.out.println(matrix[bottomrow][k]);
+            totalelements++;}
+        bottomrow--;
+        for(int l=bottomrow;l>=toprow;l--){
+            System.out.println(matrix[l][leftcol]);
+            totalelements++;}
+        leftcol++;
+    }}
+static int prefix_sum_2d(int [][] matrix,int r1,int c1,int r2,int c2){
+    int toprow=r1,rightcol=c1,bottomrow=r2,leftcol=c2;
+    int sum=0;
+    for(int i=toprow;i<bottomrow;i++){
+        for(int j=leftcol;j<rightcol;j++){
+            sum= matrix[i][j]+sum;
+
+        }
+    }
+    return sum;}
+
+}
