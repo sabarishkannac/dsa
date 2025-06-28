@@ -1,0 +1,72 @@
+//recursion spell
+  /* identify the sub problem
+
+     self work
+
+     using the sub problem and self work
+     find out the recurance relationship
+
+     identify the base case
+   */
+class Main{
+    static void increasing(int n){
+        if(n==1) {
+            System.out.println(n);
+            return;
+        }
+        increasing(n-1);
+        System.out.println(n);
+
+    }
+    static void decreasing(int n){
+        if (n==1){
+            System.out.println(n);
+            return;
+        }
+        System.out.println(n);
+        decreasing(n-1);}
+    static int factorial(int n){
+
+      if(n==0){
+          return 1;
+      }
+
+      return n*factorial(n-1);
+
+
+ }
+    static int fibonacci(int n){
+
+if(n==0)
+    return 0;
+if(n==1)
+    return 1;
+
+int prev= fibonacci(n-1);
+int prevprev= fibonacci(n-2);
+
+return prev + prevprev;}
+    static int sum_of_digits(int n){
+
+        if(n<10){
+            return n;
+
+        }
+        return n%10 + sum_of_digits(n/10);
+
+    }
+    static int recursive_power(int p,int q){
+        if(q==0)
+            return 1;
+        return p*recursive_power(p,q-1);
+
+    }
+
+    public static void main(String [] args){
+        
+    }
+
+
+}
+
+
