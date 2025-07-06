@@ -1,0 +1,148 @@
+
+import java.util.*;
+public class Main{
+
+    public static void main(String [] args){
+        String s= "23";
+        String [] keypad={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        keypad("253",keypad,"");
+    }
+    static void print_multiplr(int n,int k){
+
+        if(k==1) {
+            System.out.println(n);
+        return;
+        }
+
+
+        print_multiplr(n, k-1);
+        System.out.println(n*k);
+
+    }
+    static int sum_of_natural_numbers(int n){
+
+        if(n==1){
+            return 1;
+        }
+        int k;
+        if(n%2==0)
+           k =n*(-1);
+        else
+            k=n;
+        return k+sum_of_natural_numbers((n-1));
+
+    }
+    static int gcd(int x,int y){
+
+        if(x%y==0)
+            return y;
+
+        else{
+
+            int temp=y;
+             y= x%y;
+             x=temp;
+        }
+        return gcd(x,y);
+
+    }
+    static boolean findif(int [] arr,int idx,int x ){
+
+        if(idx<0) {
+            System.out.println("number not found");
+            return false;}
+        else if (arr[idx]==x) {
+            System.out.println("element found");
+            System.out.println(idx);
+            return true;
+        }
+
+        return findif(arr,idx-1,x);
+
+    }
+    static String  hello(String var , char x, int idx){
+
+        if(idx == var.length())
+            return "";
+        if(var.charAt(idx)==x)
+            return "" + hello(var,x,idx+1);
+        else
+            return var.charAt(idx) +  hello(var,x,idx+1);
+
+
+    }
+    static void palindrome(String word, int r, int l){
+        if(r<=l){
+
+            System.out.println( "this is a palindrome");
+        }
+        else if(word.charAt(r)==word.charAt(l)){
+            palindrome(word,r-1,l+1);
+        }
+        else{
+
+            System.out.println("this is not a palindrome");
+        }
+
+    }
+    static ArrayList<String> getSSQ(String s){
+        ArrayList<String> ans = new ArrayList<>();
+        if(s.length()==0){
+            ans.add("");
+            return ans;}
+        char curr= s.charAt(0);
+        ArrayList<String> smlans= getSSQ(s.substring(1));
+        for(String ss: smlans){
+
+            ans.add(ss);
+            ans.add(curr + ss);
+        }
+        return ans;
+    }
+    static void printSSQ(String s,String rem){
+        if(rem.length()==0){
+            System.out.println(s);
+            return ;
+        }
+        char curr= rem.charAt(0);
+        String remstring= rem.substring(1);
+
+        printSSQ(s+curr,remstring);
+        printSSQ(s,remstring);
+
+    }
+    static int min_distance(int [] arr,int i){
+        if(arr.length==i){
+            return 0;
+        }
+        if(i==arr.length-1 | i==arr.length-2){
+            return Math.abs(arr[i]-arr[arr.length-1]);
+        }
+
+        int value1= Math.abs(arr[i] -arr[i+1]);
+        int value2=Math.abs(arr[i]-arr[i+2]);
+        return Math.min((value1+min_distance(arr,i+1)),
+                (value2+min_distance(arr,i+2)));
+
+
+    }
+    static void keypad(String dig,
+                                     String [] kp,
+                                     String current){
+        if(dig.length()==0)
+        {
+            System.out.println(current);
+            return;
+        }
+    int x= dig.charAt(0)-'0';
+    String y= dig.substring(1);
+    String alphabet= kp[x];
+    for(char c:alphabet.toCharArray())
+    keypad(y, kp,current+c);
+
+
+
+
+
+    }
+}
